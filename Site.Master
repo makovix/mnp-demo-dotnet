@@ -14,7 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <!--<script src="/Scripts/mnp-demo.js" type="text/javascript"></script>-->
+
 </head>
 <body>
     <form runat="server">

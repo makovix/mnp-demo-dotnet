@@ -24,12 +24,24 @@ namespace mnp_demo_dotnet
                 StringBuilder contactList = new StringBuilder();
 
                 contactList.Append("</tr>");
-                
+
+                int i=1;
+                string rowClass = "";
+
                 foreach (DataRow row in dt.Rows)
                 {
+                    if (i%2 == 0)
+                    {
+                        rowClass = "table-td-even-contactlist";
+                    }
+                    else
+                    {
+                        rowClass = "table-td-odd-contactlist";
+                    }
+
                     contactList.Append("<tr>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append("<a href=\"/contact?id=" + row["c_id"] + "\">");
                     contactList.Append(row["c_name"]);
                     contactList.Append("</a>");
@@ -37,27 +49,29 @@ namespace mnp_demo_dotnet
                     contactList.Append(row["c_title"]);
                     contactList.Append("</td>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append(row["co_company"]);
                     contactList.Append("</td>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append(row["c_phone"]);
                     contactList.Append("</td>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append(row["c_address"]);
                     contactList.Append("</td>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append(row["c_email"]);
                     contactList.Append("</td>");
 
-                    contactList.Append("<td>");
+                    contactList.Append("<td class=\"" + rowClass + "\">");
                     contactList.Append(row["c_lastcontacted"]);
                     contactList.Append("</td>");
 
                     contactList.Append("</tr>");
+
+                    i++;
                 }
 
 

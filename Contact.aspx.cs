@@ -104,7 +104,10 @@ namespace mnp_demo_dotnet
                                 txtEmail.Text = row["c_email"].ToString();
                                 txtComments.Text = row["c_comments"].ToString();
                                 txtCID.Text = row["c_id"].ToString();
-                                txtLastDate.Text = row["c_lastcontacted"].ToString();
+                                
+                                DateTime lastContacted = DateTime.Parse(row["c_lastcontacted"].ToString());
+
+                                txtLastDate.Text = lastContacted.ToShortDateString();
                                 ddlCompany.SelectedValue = row["co_id"].ToString();
                             }
                             con.Close();
