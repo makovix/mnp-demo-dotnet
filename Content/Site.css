@@ -35,3 +35,7 @@ textarea {
     background-color: #777;
     border-color: #fff
 }
+
+.table-column-borders {
+    border-left: 1px solid #000;
+}
