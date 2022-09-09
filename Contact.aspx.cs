@@ -147,15 +147,15 @@ namespace mnp_demo_dotnet
 
                         if (rowsAffected == 1)
                         {
-                            litResponseMsg.Text = "<font color=\"green\">Contact information has been successfully updated!</font>";
+                            litResponseMsg.Text = "<font color=\"green\">Contact information has been successfully updated!</font> <a href=\"/\">Back to contact list</a>";
                         } else
                         {
-                            litResponseMsg.Text = "<font color=\"red\">Contact information could not be updated</font>";
+                            litResponseMsg.Text = "<font color=\"red\">Contact information could not be updated</font> <a href=\"/\">Back to contact list</a>";
                         }
                     }
                     catch (Exception e)
                     {
-                        litResponseMsg.Text = "<font color=\"red\">There was an error, contact information could not be updated</font>";
+                        litResponseMsg.Text = "<font color=\"red\">There was an error, contact information could not be updated</font> <a href=\"/\">Back to contact list</a>";
                     } 
                     finally
                     {
@@ -199,16 +199,16 @@ namespace mnp_demo_dotnet
 
                         if (rowsAffected == 1)
                         {
-                            litResponseMsg.Text = "<font color=\"green\">Contact information has been successfully added!</font>";
+                            litResponseMsg.Text = "<font color=\"green\">Contact information has been successfully added!</font> <a href=\"/\">Back to contact list</a>";
                         }
                         else
                         {
-                            litResponseMsg.Text = "<font color=\"red\">Contact information could not be added</font>";
+                            litResponseMsg.Text = "<font color=\"red\">Contact information could not be added</font> <a href=\"/\">Back to contact list</a>";
                         }
                     }
                     catch (Exception e)
                     {
-                        litResponseMsg.Text = "<font color=\"red\">There was an error, contact information could not be added</font>";
+                        litResponseMsg.Text = "<font color=\"red\">There was an error, contact information could not be added</font> <a href=\"/\">Back to contact list</a>";
                     }
                     finally
                     {
