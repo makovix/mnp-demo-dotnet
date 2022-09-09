@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="mnp_demo_dotnet.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
+    Contact Details
+    <br />
     <div id="contact-border" style="border:solid; margin: auto;">
 
-
+        
         <table style="width:100%">
             <tr>
                 <td class="table-td-contact" style="width: 84px">Name</td>
