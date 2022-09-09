@@ -18,7 +18,8 @@ namespace mnp_demo_dotnet
         {
             if (!this.IsPostBack)
             {
-                
+                //query the contacts, companies table in the DB and populate the list on the website
+
                 DataTable dt = this.GetContactsData();
                              
                 StringBuilder contactList = new StringBuilder();
@@ -30,6 +31,8 @@ namespace mnp_demo_dotnet
 
                 foreach (DataRow row in dt.Rows)
                 {
+
+                    //determine the row coloring for even and odd rows
                     if (i%2 == 0)
                     {
                         rowClass = "table-td-even-contactlist";
@@ -106,6 +109,7 @@ namespace mnp_demo_dotnet
 
         protected void btnNewContact_Click(object sender, EventArgs e)
         {
+            //route to new contact form
             Response.Redirect("/contact.aspx?new=true");
         }
     }

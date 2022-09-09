@@ -20,7 +20,7 @@ namespace mnp_demo_dotnet
         {
             if (!this.IsPostBack)
             {
-
+                //upon pageload, determine if the user is here to create a new contact, or update an existing one. Same form is used for both events
                 string contactId = Request.QueryString["id"];
                 string newContact = Request.QueryString["new"];
 
@@ -29,12 +29,14 @@ namespace mnp_demo_dotnet
                 //view and edit existing contact
                 if (contactId != null)
                 {
+                    //load data for existing user
                     setContactsData(int.Parse(contactId));
                 }
 
                 //create a new contact
                 if (newContact == "true")
                 {
+                    //ensure all fields are reset for new user
                     txtName.Text = "";
                     txtJobTitle.Text = "";
                     txtPhone.Text = "";
@@ -60,6 +62,8 @@ namespace mnp_demo_dotnet
             int cId = int.Parse(txtCID.Text);
             string coId = ddlCompany.SelectedValue;
 
+            //upon submission, determine if this is for a new or existing user
+            // cId == -1 is a flag that is set in a hidden field to indicate that the user is new. If cId is any other integer, it will be an existing user
             if (cId == -1)
             {
                 insertContactData(cName, cTitle, cPhone, cAddress, cEmail, cLastContacted, cComments, coId);
@@ -94,6 +98,7 @@ namespace mnp_demo_dotnet
                         {
                             sda.Fill(dt);
 
+                            //extract user contact values from query and set fields with these values
                             foreach (DataRow row in dt.Rows)
                             {
 
@@ -131,6 +136,7 @@ namespace mnp_demo_dotnet
 
                     try
                     {
+                        //add values submitted from form as query parameters
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@con_name", cName);
                         cmd.Parameters.AddWithValue("@conn_title", cTitle);
@@ -224,6 +230,9 @@ namespace mnp_demo_dotnet
 
         private int getNextCID()
         {
+            //I missed the opportunity to set AUTO INCREMENT on the contact ID field in the database, there my workaround was to 
+            //find the max contact ID and add 1 to it
+
             string strConn = ConfigurationManager.ConnectionStrings["mnp-demo-dotnet_dbConnectionString"].ConnectionString;
             string strQuery = "select (max(c_id)+1) c_id from dbo.contacts";
 
@@ -255,8 +264,12 @@ namespace mnp_demo_dotnet
             }
         }
 
+       
         private void setCompanyList()
         {
+            // Get list of all companies in the company table in the DB and populate the dropdownlist with these values
+            // I couldn't remember the quick way to do this, so I simply iterated though the data
+
             string strConn = ConfigurationManager.ConnectionStrings["mnp-demo-dotnet_dbConnectionString"].ConnectionString;
             string strQuery = "select co_id, co_company from dbo.companies";
 
